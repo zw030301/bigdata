@@ -1,7 +1,10 @@
 # bigdata
-大数据学习
-第一次提交(2018/11/19)
-	SaprkRDD的一些基本操作
-	SparkWordCount的示例程序
-	SparkStreaming的小例子
-	SparkSQL还未深入了解
+# 大数据学习
+## 第一次提交(2018/11/19)
+	*1 SaprkRDD的一些基本操作
+	*2 SparkWordCount的示例程序
+	*3 SparkStreaming的小例子
+	*4 SparkSQL还未深入了解
+## 第二次提交(2018/11/20)
+	*1 mapreduce的wordcount程序示例，包含Mapper,Reducer和Dirver
+	*2  自定义序列化实体类，并对实体类进行wordcount操作
