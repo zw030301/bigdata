@@ -27,11 +27,12 @@ public class SparkStreaming {
 	public void testSparkStreamingSocket() throws InterruptedException {
 		SparkConf conf=new SparkConf().setAppName("spark_streaming").setMaster("local[2]");
 		JavaStreamingContext jssc=new JavaStreamingContext(conf,Durations.seconds(1));
+		//jssc.socketTextStream将会创建一个SocketInputDStream;这个InputDStream的ScoketReceiver将会监听9999端口
 		JavaReceiverInputDStream<String> lines = jssc.socketTextStream("localhost",9999);
-		JavaDStream<String> words = lines.flatMap(line->Arrays.asList(line.split(" ")).iterator());
-		JavaPairDStream<String, Integer> paris = words.mapToPair(word->new Tuple2<>(word, 1));
-		JavaPairDStream<String, Integer> wordCounts = paris.reduceByKey((i1,i2)->i1+i2);
-		wordCounts.print();
+		JavaDStream<String> words = lines.flatMap(line->Arrays.asList(line.split(" ")).iterator());//DStream transformation,FlatMapperDStream
+		JavaPairDStream<String, Integer> paris = words.mapToPair(word->new Tuple2<>(word, 1));//DStream transformation,MapperDStream
+		JavaPairDStream<String, Integer> wordCounts = paris.reduceByKey((i1,i2)->i1+i2);//DStream transformation,ShuffledDStream
+		wordCounts.print();//DStream output,ForeachDStream
 		jssc.start();
 		jssc.awaitTermination();
 	}
