@@ -8,3 +8,6 @@
 ## 第二次提交(2018/11/20)
 	*1 mapreduce的wordcount程序示例，包含Mapper,Reducer和Dirver
 	*2  自定义序列化实体类，并对实体类进行wordcount操作
+## 第三次提交(2018/12/03)
+	*1 hdfs的输入输出流的简单示例
+	*2 hdfs的客户端简单示例
